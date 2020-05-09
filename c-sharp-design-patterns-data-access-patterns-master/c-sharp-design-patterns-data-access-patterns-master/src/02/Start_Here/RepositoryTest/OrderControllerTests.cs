@@ -21,7 +21,9 @@ namespace RepositoryTest
             var customerRepositoryMoq = new Mock<IRepository<Customer>>();
 
             var unitOfWorkMoq = new Mock<IUnitOfWork>();
-            //unitOfWorkMoq.Setup(It.IsAny<ShoppingContext>());
+            unitOfWorkMoq.SetupGet(u => u.CustomerRepository).Returns(customerRepositoryMoq.Object);
+            unitOfWorkMoq.SetupGet(u => u.OrderRepository).Returns(orderRepositoryMoq.Object);
+            unitOfWorkMoq.SetupGet(u => u.ProductRepository).Returns(productRepositoryMoq.Object);
 
             var orderController = new OrderController(unitOfWorkMoq.Object);
             IEnumerable<LineItemModel> lineItems = new[] {
