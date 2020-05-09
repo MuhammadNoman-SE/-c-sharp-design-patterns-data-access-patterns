@@ -1,6 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using MyShop.Domain.Models;
+using MyShop.Infrastructure;
 using MyShop.Infrastructure.Repositories;
 using MyShop.Web.Controllers;
 using MyShop.Web.Models;
@@ -17,8 +18,12 @@ namespace RepositoryTest
         {
             var orderRepositoryMoq = new Mock<IRepository<Order>>();
             var productRepositoryMoq = new Mock<IRepository<Product>>();
-            
-            var orderController = new OrderController(orderRepositoryMoq.Object, productRepositoryMoq.Object);
+            var customerRepositoryMoq = new Mock<IRepository<Customer>>();
+
+            var unitOfWorkMoq = new Mock<IUnitOfWork>();
+            //unitOfWorkMoq.Setup(It.IsAny<ShoppingContext>());
+
+            var orderController = new OrderController(unitOfWorkMoq.Object);
             IEnumerable<LineItemModel> lineItems = new[] {
                 new LineItemModel { ProductId = Guid.NewGuid(), Quantity = 2 },
                 new LineItemModel { ProductId = Guid.NewGuid(), Quantity = 4 }

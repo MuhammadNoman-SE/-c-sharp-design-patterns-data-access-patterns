@@ -12,28 +12,25 @@ namespace MyShop.Web.Controllers
 {
     public class OrderController : Controller
     {
-        private IRepository<Order> _orderRepository;
-        private IRepository<Product> _productRepository;
-        private IRepository<Customer> _customerRepository;
+        private IUnitOfWork _unitOfWork;
+       
 
 
-        public OrderController(IRepository<Order> orderRepository, IRepository<Product> productRepository, IRepository<Customer> customerRepository)
+        public OrderController(IUnitOfWork unitOfWork)
         {
-            _orderRepository = orderRepository;
-            _productRepository = productRepository;
-            _customerRepository = customerRepository;
+            _unitOfWork = unitOfWork;
         }
 
         public IActionResult Index()
         {
-            var orders = _orderRepository.Find(order => order.OrderDate > DateTime.UtcNow.AddDays(-1)).ToList();
+            var orders = _unitOfWork.OrderRepository.Find(order => order.OrderDate > DateTime.UtcNow.AddDays(-1)).ToList();
 
             return View(orders);
         }
 
         public IActionResult Create()
         {
-            var products = _productRepository.All();
+            var products = _unitOfWork.ProductRepository.All();
 
             return View(products);
         }
@@ -45,7 +42,7 @@ namespace MyShop.Web.Controllers
 
             if (string.IsNullOrWhiteSpace(model.Customer.Name)) return BadRequest("Customer needs a name");
 
-            var customer= _customerRepository.Find(c=>c.Name == model.Customer.Name).FirstOrDefault();
+            var customer= _unitOfWork.CustomerRepository.Find(c=>c.Name == model.Customer.Name).FirstOrDefault();
             if (null != customer)
             {
                 customer.Name = model.Customer.Name;
@@ -53,8 +50,7 @@ namespace MyShop.Web.Controllers
                 customer.City = model.Customer.City;
                 customer.PostalCode = model.Customer.PostalCode;
                 customer.Country = model.Customer.Country;
-                _customerRepository.Update(customer);
-                _customerRepository.SaveChanges();
+                _unitOfWork.CustomerRepository.Update(customer);
             }
             else
             {
@@ -76,9 +72,9 @@ namespace MyShop.Web.Controllers
                 Customer = customer
             };
 
-            _orderRepository.Add(order);
+            _unitOfWork.OrderRepository.Add(order);
 
-            _orderRepository.SaveChanges();
+            _unitOfWork.SaveChanges();
 
             return Ok("Order Created");
         }
