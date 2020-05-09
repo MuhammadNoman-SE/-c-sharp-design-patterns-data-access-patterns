@@ -14,11 +14,14 @@ namespace MyShop.Web.Controllers
     {
         private IRepository<Order> _orderRepository;
         private IRepository<Product> _productRepository;
+        private IRepository<Customer> _customerRepository;
 
-        public OrderController(IRepository<Order> orderRepository, IRepository<Product> productRepository)
+
+        public OrderController(IRepository<Order> orderRepository, IRepository<Product> productRepository, IRepository<Customer> customerRepository)
         {
             _orderRepository = orderRepository;
             _productRepository = productRepository;
+            _customerRepository = customerRepository;
         }
 
         public IActionResult Index()
@@ -42,15 +45,28 @@ namespace MyShop.Web.Controllers
 
             if (string.IsNullOrWhiteSpace(model.Customer.Name)) return BadRequest("Customer needs a name");
 
-            var customer = new Customer
+            var customer= _customerRepository.Find(c=>c.Name == model.Customer.Name).FirstOrDefault();
+            if (null != customer)
             {
-                Name = model.Customer.Name,
-                ShippingAddress = model.Customer.ShippingAddress,
-                City = model.Customer.City,
-                PostalCode = model.Customer.PostalCode,
-                Country = model.Customer.Country
-            };
-
+                customer.Name = model.Customer.Name;
+                customer.ShippingAddress = model.Customer.ShippingAddress;
+                customer.City = model.Customer.City;
+                customer.PostalCode = model.Customer.PostalCode;
+                customer.Country = model.Customer.Country;
+                _customerRepository.Update(customer);
+                _customerRepository.SaveChanges();
+            }
+            else
+            {
+                customer = new Customer
+                {
+                    Name = model.Customer.Name,
+                    ShippingAddress = model.Customer.ShippingAddress,
+                    City = model.Customer.City,
+                    PostalCode = model.Customer.PostalCode,
+                    Country = model.Customer.Country
+                };
+            }
             var order = new Order
             {
                 LineItems = model.LineItems
