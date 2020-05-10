@@ -1,5 +1,6 @@
 ﻿using MyShop.Domain.Lazy;
 using MyShop.Domain.Models;
+using MyShop.Infrastructure.Lazy.GhostObject;
 using MyShop.Infrastructure.Lazy.Proxy;
 using MyShop.Infrastructure.sevices;
 using System;
@@ -25,6 +26,15 @@ namespace MyShop.Infrastructure.Repositories
             return base.Update(co);
         }
 
+        public override Customer Get(Guid id)
+        {
+            var customer = _context.Customers.Where(c => c.CustomerId == id).Single();
+
+            return new CustomerGhost(() => base.Get(id))
+            {
+                CustomerId = customer.CustomerId
+            };
+        }
         //public override IEnumerable<Customer> All()
         //{
         //    return base.All().Select(c => {
@@ -41,16 +51,22 @@ namespace MyShop.Infrastructure.Repositories
             return base.All().Select(MapCustomer);
         }
         private CustomerProxy MapCustomer(Customer cu) {
-            CustomerProxy cp = new CustomerProxy {
+            var customer = _context.Customers.Where(c => c.CustomerId == cu.CustomerId).Single();
 
-            Name = cu.Name,
-            City = cu.City,
-            Country = cu.Country,
-            ShippingAddress = cu.ShippingAddress,
-            PostalCode = cu.PostalCode
+            return new CustomerGhost(() => base.Get(customer.CustomerId))
+            {
+                CustomerId = customer.CustomerId
+            };
+        //    CustomerProxy cp = new CustomerProxy {
 
-        };
-            return cp;
+        //    Name = cu.Name,
+        //    City = cu.City,
+        //    Country = cu.Country,
+        //    ShippingAddress = cu.ShippingAddress,
+        //    PostalCode = cu.PostalCode
+
+        //};
+            //return cp;
         }
     }
 }

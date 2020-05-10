@@ -8,7 +8,6 @@ C:\Users\Muhammad.Noman\OneDrive - Bentley Systems, Inc\Desktop\c-sharp-design-p
 C:\Users\Muhammad.Noman\OneDrive - Bentley Systems, Inc\Desktop\RepositoryPattern\MyShop.Domain\bin\Debug\netstandard2.0\MyShop.Domain.deps.json
 C:\Users\Muhammad.Noman\OneDrive - Bentley Systems, Inc\Desktop\RepositoryPattern\MyShop.Domain\bin\Debug\netstandard2.0\MyShop.Domain.dll
 C:\Users\Muhammad.Noman\OneDrive - Bentley Systems, Inc\Desktop\RepositoryPattern\MyShop.Domain\bin\Debug\netstandard2.0\MyShop.Domain.pdb
-C:\Users\Muhammad.Noman\OneDrive - Bentley Systems, Inc\Desktop\RepositoryPattern\MyShop.Domain\obj\Debug\netstandard2.0\MyShop.Domain.csprojAssemblyReference.cache
 C:\Users\Muhammad.Noman\OneDrive - Bentley Systems, Inc\Desktop\RepositoryPattern\MyShop.Domain\obj\Debug\netstandard2.0\MyShop.Domain.AssemblyInfoInputs.cache
 C:\Users\Muhammad.Noman\OneDrive - Bentley Systems, Inc\Desktop\RepositoryPattern\MyShop.Domain\obj\Debug\netstandard2.0\MyShop.Domain.AssemblyInfo.cs
 C:\Users\Muhammad.Noman\OneDrive - Bentley Systems, Inc\Desktop\RepositoryPattern\MyShop.Domain\obj\Debug\netstandard2.0\MyShop.Domain.dll
