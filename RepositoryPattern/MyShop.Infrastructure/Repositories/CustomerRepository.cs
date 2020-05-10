@@ -1,4 +1,6 @@
-﻿using MyShop.Domain.Models;
+﻿using MyShop.Domain.Lazy;
+using MyShop.Domain.Models;
+using MyShop.Infrastructure.sevices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +22,18 @@ namespace MyShop.Infrastructure.Repositories
             co.PostalCode = cu.PostalCode;
 
             return base.Update(co);
+        }
+
+        public override IEnumerable<Customer> All()
+        {
+            return base.All().Select(c => {
+                c.ProfilePictureValuHolder = new Lazy<byte[]>(() => {
+                    return ProfilePictureService.GetFor(c.Name);
+                });
+                return c;
+            });
+            
+
         }
     }
 }

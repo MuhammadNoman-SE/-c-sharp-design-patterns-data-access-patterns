@@ -20,6 +20,8 @@ namespace MyShop.Infrastructure
         }
         protected override void OnModelCreating(ModelBuilder mb) {
             mb.Entity<Customer>().Ignore(c => c.ProfilePicture);
+            mb.Entity<Customer>().Ignore(c => c.ProfilePictureValuHolder);
+
             base.OnModelCreating(mb);
         }
     }
