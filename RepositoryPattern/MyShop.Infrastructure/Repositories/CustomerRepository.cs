@@ -1,5 +1,6 @@
 ﻿using MyShop.Domain.Lazy;
 using MyShop.Domain.Models;
+using MyShop.Infrastructure.Lazy.Proxy;
 using MyShop.Infrastructure.sevices;
 using System;
 using System.Collections.Generic;
@@ -24,16 +25,32 @@ namespace MyShop.Infrastructure.Repositories
             return base.Update(co);
         }
 
-        public override IEnumerable<Customer> All()
-        {
-            return base.All().Select(c => {
-                c.ProfilePictureValuHolder = new Lazy<byte[]>(() => {
-                    return ProfilePictureService.GetFor(c.Name);
-                });
-                return c;
-            });
-            
+        //public override IEnumerable<Customer> All()
+        //{
+        //    return base.All().Select(c => {
+        //        c.ProfilePictureValuHolder = new Lazy<byte[]>(() => {
+        //            return ProfilePictureService.GetFor(c.Name);
+        //        });
+        //        return c;
+        //    });
 
+
+        //}
+
+        public override IEnumerable<Customer> All() {
+            return base.All().Select(MapCustomer);
+        }
+        private CustomerProxy MapCustomer(Customer cu) {
+            CustomerProxy cp = new CustomerProxy {
+
+            Name = cu.Name,
+            City = cu.City,
+            Country = cu.Country,
+            ShippingAddress = cu.ShippingAddress,
+            PostalCode = cu.PostalCode
+
+        };
+            return cp;
         }
     }
 }
