@@ -1,0 +1,11 @@
+C:\Users\Muhammad.Noman\OneDrive - Bentley Systems, Inc\Desktop\RepositoryPatternFinal\MyShop.Infrastructure\bin\Debug\netstandard2.0\MyShop.Infrastructure.deps.json
+C:\Users\Muhammad.Noman\OneDrive - Bentley Systems, Inc\Desktop\RepositoryPatternFinal\MyShop.Infrastructure\bin\Debug\netstandard2.0\MyShop.Infrastructure.dll
+C:\Users\Muhammad.Noman\OneDrive - Bentley Systems, Inc\Desktop\RepositoryPatternFinal\MyShop.Infrastructure\bin\Debug\netstandard2.0\MyShop.Infrastructure.pdb
+C:\Users\Muhammad.Noman\OneDrive - Bentley Systems, Inc\Desktop\RepositoryPatternFinal\MyShop.Infrastructure\bin\Debug\netstandard2.0\MyShop.Domain.dll
+C:\Users\Muhammad.Noman\OneDrive - Bentley Systems, Inc\Desktop\RepositoryPatternFinal\MyShop.Infrastructure\bin\Debug\netstandard2.0\MyShop.Domain.pdb
+C:\Users\Muhammad.Noman\OneDrive - Bentley Systems, Inc\Desktop\RepositoryPatternFinal\MyShop.Infrastructure\obj\Debug\netstandard2.0\MyShop.Infrastructure.csprojAssemblyReference.cache
+C:\Users\Muhammad.Noman\OneDrive - Bentley Systems, Inc\Desktop\RepositoryPatternFinal\MyShop.Infrastructure\obj\Debug\netstandard2.0\MyShop.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Muhammad.Noman\OneDrive - Bentley Systems, Inc\Desktop\RepositoryPatternFinal\MyShop.Infrastructure\obj\Debug\netstandard2.0\MyShop.Infrastructure.AssemblyInfo.cs
+C:\Users\Muhammad.Noman\OneDrive - Bentley Systems, Inc\Desktop\RepositoryPatternFinal\MyShop.Infrastructure\obj\Debug\netstandard2.0\MyShop.Infrastructure.csproj.CopyComplete
+C:\Users\Muhammad.Noman\OneDrive - Bentley Systems, Inc\Desktop\RepositoryPatternFinal\MyShop.Infrastructure\obj\Debug\netstandard2.0\MyShop.Infrastructure.dll
+C:\Users\Muhammad.Noman\OneDrive - Bentley Systems, Inc\Desktop\RepositoryPatternFinal\MyShop.Infrastructure\obj\Debug\netstandard2.0\MyShop.Infrastructure.pdb
